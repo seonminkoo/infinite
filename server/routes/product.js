@@ -122,21 +122,29 @@ router.post('/products', (req, res) => {
 ///?id=${productId}&type=single
 router.get('/products_by_id', (req, res) => {
     let type = req.query.type
-    let productIds = req.query.id
+    let productId = req.query.id
+    console.log("productID", productId)
 
     if (type === "array"){
-
+        let ids = req.query.id.split(',')
+        productId = ids.map(item => {
+            return item
+        })
     }
 
-    //product id로 product 정보 찾음
-    Product.find({ '_id': { $in: productIds} })
+    //product id로 product 정보 찾음 
+    Product.find({ '_id': { $in: productId} })
         .populate("writer")
-        .exec((err, productInfo) => {
+        //와.. 로그도 잘못찍으면 에러 뜨는구나... 처음알았네...
+
+        .exec((err, product) => {
+            console.log("product", product)
             if (err) {
                 return res.status(400).send(err)
             } else {
                 return res.status(200).send(product)
             }
+        })
 })
 
 

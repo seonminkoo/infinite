@@ -9,13 +9,14 @@ function ProductDetail(props) {
 
     const productId = props.match.params.products_by_id
     const [Product, setProduct] = useState({}) //([])
-    console.log(productId)
+    console.log("hi",productId)
 
     useEffect(() => {
         axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
             .then(response => {
                 setProduct(response.data[0])
             })
+            //product.js의 find 확인할 것.
             .catch(err => alert(err))
     }, [])
 
@@ -23,6 +24,7 @@ function ProductDetail(props) {
     return (
     
         <div style={{ width: '100%', padding: '3rem 4rem' }}>
+            <p>hello?</p>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <h1>{Product.title}</h1>
             </div>
@@ -31,11 +33,10 @@ function ProductDetail(props) {
 
             <Row gutter={[16, 16]} >
                 <Col lg={12} sm={24}> 
-                    { /*ProductImage */}
                     <ProductImage detail={Product} />
                 </Col>
                 <Col lg={12} sm={24}>
-                    {/* ProductInfo */}
+                   
                     <ProductInfo detail={Product} />
                 </Col>
             </Row>
