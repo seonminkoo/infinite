@@ -119,4 +119,25 @@ router.post('/products', (req, res) => {
         })
 })
 
+///?id=${productId}&type=single
+router.get('/products_by_id', (req, res) => {
+    let type = req.query.type
+    let productIds = req.query.id
+
+    if (type === "array"){
+
+    }
+
+    //product id로 product 정보 찾음
+    Product.find({ '_id': { $in: productIds} })
+        .populate("writer")
+        .exec((err, productInfo) => {
+            if (err) {
+                return res.status(400).send(err)
+            } else {
+                return res.status(200).send(product)
+            }
+})
+
+
 module.exports = router;

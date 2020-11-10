@@ -4,10 +4,11 @@ import ProductImage from './Section/ProductImage';
 import ProductInfo from './Section/ProductInfo';
 import { Row, Col } from 'antd';
 
+
 function ProductDetail(props) {
 
     const productId = props.match.params.products_by_id
-    const [Product, setProduct] = useState({})
+    const [Product, setProduct] = useState({}) //([])
     console.log(productId)
 
     useEffect(() => {
@@ -29,8 +30,8 @@ function ProductDetail(props) {
             <br />
 
             <Row gutter={[16, 16]} >
-                <Col lg={12} sm={24}>
-                    {/* ProductImage */}
+                <Col lg={12} sm={24}> 
+                    { /*ProductImage */}
                     <ProductImage detail={Product} />
                 </Col>
                 <Col lg={12} sm={24}>

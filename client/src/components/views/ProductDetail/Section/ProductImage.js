@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ImageGallery from 'react-image-gallery';
 
 function ProductImage(props) {
@@ -10,7 +10,7 @@ function ProductImage(props) {
         if (props.detail.images && props.detail.images.length > 0) {
             let images = []
 
-            props.detail.images.map(item => {
+            props.detail.images && props.detail.images.map(item => {
                 images.push({
                     original: `http://localhost:5000/${item}`,
                     thumbnail: `http://localhost:5000/${item}`
