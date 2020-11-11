@@ -15,16 +15,24 @@ function ProductDetail(props) {
         axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
             .then(response => {
                 setProduct(response.data[0])
+                console.log("클릭한 페이지", response.data[0])
+                
+                /*
+                Product.findOneAndUpdate(
+                    { _id : response.data[0]._id },
+                    { $inc : {views : +1}},
+                    { new : true}
+                )
+                */
+
             })
             //product.js의 find 확인할 것.
             .catch(err => alert(err))
     }, [])
 
-
     return (
     
         <div style={{ width: '100%', padding: '3rem 4rem' }}>
-            <p>hello?</p>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <h1>{Product.title}</h1>
             </div>

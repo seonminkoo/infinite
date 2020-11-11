@@ -108,7 +108,21 @@ router.post('/products', (req, res) => {
             })
     
         }
-    
+
+        /*
+        let view = req.query.view
+        let newView = view + 1
+        console.log("뉴뷰 값", newView)
+
+        Product.update(
+            { _id: {$in: productIds} },
+            {$inc: {"view": newView}},
+            { new: true },
+            callback
+            )
+        console.log("뷰 값", view)
+            */
+
         Product.find({ _id: { $in: productId } })
             .populate('writer')
             .exec((err, product) => {
@@ -119,7 +133,46 @@ router.post('/products', (req, res) => {
         })
 })
 
+router.get('/products_by_id', (req, res) => {
+
+    let type = req.query.type
+    let productIds = req.query.id
+    let views = req.query.view
+    console.log("views", view)
+    //console.log("req", req)
+
+    if (type === "array") {
+        let ids = req.query.id.split(',')
+        productIds = ids.map(item => {
+            return item
+        })
+
+    }
+
+    let view = req.query.view
+    let newView = view + 1
+    //console.log("뉴뷰 값", newView)
+    
+    Product.update(
+        { _id: {$in: productIds} },
+        {$inc: {"view": newView}},
+        { new: true },
+        callback
+        )
+    //console.log("뷰 값", view)
+
+    Product.find({ _id: { $in: productIds } })
+        .populate('writer')
+        .exec((err, product) => {
+            if (err) return res.status(400).send(err)
+            return res.status(200).send(product)
+        })
+
+})
+
 ///?id=${productId}&type=single
+
+/*
 router.get('/products_by_id', (req, res) => {
     let type = req.query.type
     let productId = req.query.id
@@ -135,8 +188,6 @@ router.get('/products_by_id', (req, res) => {
     //product id로 product 정보 찾음 
     Product.find({ '_id': { $in: productId} })
         .populate("writer")
-        //와.. 로그도 잘못찍으면 에러 뜨는구나... 처음알았네...
-
         .exec((err, product) => {
             console.log("product", product)
             if (err) {
@@ -146,6 +197,6 @@ router.get('/products_by_id', (req, res) => {
             }
         })
 })
-
+*/
 
 module.exports = router;
