@@ -28,8 +28,6 @@ function ProductDetail(props) {
                     { new : true}
                 )
                 */
-                
-                
 
             })
             //product.js의 find 확인할 것.

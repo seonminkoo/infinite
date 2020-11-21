@@ -1,4 +1,3 @@
-/*
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -21,4 +20,3 @@ const replySchema = mongoose.Schema({
 const Reply = mongoose.model('Reply', replySchema);
 
 module.exports = { Reply }    
-*/

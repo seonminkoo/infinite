@@ -1,4 +1,3 @@
-/*
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -20,5 +19,3 @@ const communitySchema = mongoose.Schema({
 const Community = mongoose.model('Community', communitySchema);
 
 module.exports = { Community }    
-
-*/

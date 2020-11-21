@@ -21,14 +21,22 @@ function LandingPage() {
     })
     const [SearchTerm, setSearchTerm] = useState("")
     const [View, setView] = useState()
-
+    
     //초기에 최근 8개의 게시글만 보여줌. skip에 8 저장되어 있음
     useEffect(() => {
+
+        /*
+        let bodyRC = {
+            limitRC : LimitRC
+        }
+        */
 
         let body = {
             skip : Skip,
             limit : Limit
         }
+        
+        //getProducts(bodyRC)
         getProducts(body)
     }, [])
 
@@ -145,6 +153,18 @@ function LandingPage() {
         getProducts(body)
     }
 
+    /*
+    const ShowRecommend = (filters) => {
+        let body = {
+            skip : 0,
+            limitRC : LimitRC,
+            filters : filters
+        }
+        getProducts(body)
+        setSkip(0)
+    }
+    */
+
     return (
         <div style={{width:'75%', margin: '3rem auto'}}>
             <div style={{ textAlign: 'center'}}>
@@ -169,6 +189,14 @@ function LandingPage() {
                     refreshFunction={UpdateSearchTerm}
                 />
             </div>
+
+            {/*Recommend*/}
+
+            
+            <label>
+                전체 보기
+            </label>
+            
 
             {/* Card */}
             <Row gutter={16}>

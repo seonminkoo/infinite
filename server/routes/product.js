@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+//const { default: ProductImage } = require('../../client/src/components/views/ProductDetail/Section/ProductImage');
 const { Product } = require('../models/Product');
 
 //=================================
