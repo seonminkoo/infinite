@@ -36,7 +36,7 @@ function LandingPage() {
         "pluginKey": "93635d68-761c-4d5a-8cde-d63b06cf017c" 
     });
     // 채널톡 닫음
-    ChannelService.shutdown();
+    //ChannelService.shutdown();
 
     // 프로덕트 정보 불러오기. slice(0, 8)은 당연히 skip이랑 연계되겠죠?
     const getProducts = (body) => {

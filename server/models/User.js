@@ -72,7 +72,14 @@ const userSchema = mongoose.Schema({
         type:String,
         minglength: 1
     },
-
+    //cart : {
+      //  type: Array,
+       // default: []
+    //},
+    //history:{
+    //    type: Array,
+    //    default: []
+    //},
     token : {
         type: String,
     },

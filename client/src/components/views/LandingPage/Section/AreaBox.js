@@ -26,7 +26,7 @@ function AreaBox(props) {
     const renderCheckboxList = () => props.list && props.list.map((value, index) => (
         <React.Fragment key={index}>
             <Checkbox onChange={() => handdleToggle(value._id)} checked={Checked.indexOf(value._id) === -1 ? false : true}/>
-                <span>{value.name}</span>
+                <span style = {{marginLeft: 5, marginRight : 10}}>{value.name}</span>
         </React.Fragment>
     ))
 

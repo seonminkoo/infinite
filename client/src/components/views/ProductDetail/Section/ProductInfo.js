@@ -43,6 +43,10 @@ function ProductInfo(props) {
 
     */
 
+    //const addToCartHandler = () => {
+    //    props.addToCart(props.detail._id)
+    //}
+
 
     return (
         <div>
@@ -56,7 +60,7 @@ function ProductInfo(props) {
             <br />
             <br />
             <div style={{ display: 'flex', justifyContent: 'center'}}>
-                <Button size="large" shape="round" type="danger" onClick>
+                <Button size="large" shape="round" type="danger" onClick >
                     관심등록
                 </Button>
             </div>

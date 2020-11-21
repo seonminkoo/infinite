@@ -109,20 +109,6 @@ router.post('/products', (req, res) => {
     
         }
 
-        /*
-        let view = req.query.view
-        let newView = view + 1
-        console.log("뉴뷰 값", newView)
-
-        Product.update(
-            { _id: {$in: productIds} },
-            {$inc: {"view": newView}},
-            { new: true },
-            callback
-            )
-        console.log("뷰 값", view)
-            */
-
         Product.find({ _id: { $in: productId } })
             .populate('writer')
             .exec((err, product) => {
@@ -133,6 +119,7 @@ router.post('/products', (req, res) => {
         })
 })
 
+/*
 router.get('/products_by_id', (req, res) => {
 
     let type = req.query.type
@@ -169,10 +156,9 @@ router.get('/products_by_id', (req, res) => {
         })
 
 })
+*/
 
 ///?id=${productId}&type=single
-
-/*
 router.get('/products_by_id', (req, res) => {
     let type = req.query.type
     let productId = req.query.id
@@ -184,6 +170,15 @@ router.get('/products_by_id', (req, res) => {
             return item
         })
     }
+
+    
+    Product.findOneAndUpdate(
+        {'_id' : {$in: productId}},
+        {$inc: {'view' : 1}},
+        {new: true},
+        //console.log("여기 오나?", view)
+    )
+    
 
     //product id로 product 정보 찾음 
     Product.find({ '_id': { $in: productId} })
@@ -197,6 +192,6 @@ router.get('/products_by_id', (req, res) => {
             }
         })
 })
-*/
+
 
 module.exports = router;

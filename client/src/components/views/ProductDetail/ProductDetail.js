@@ -3,9 +3,13 @@ import axios from 'axios';
 import ProductImage from './Section/ProductImage';
 import ProductInfo from './Section/ProductInfo';
 import { Row, Col } from 'antd';
+//import {addToCart} from '../../../_actions/user_actions';
+//import {useDispatch} from 'react-redux';
 
 
 function ProductDetail(props) {
+
+    //const dispatch = useDispatch();
 
     const productId = props.match.params.products_by_id
     const [Product, setProduct] = useState({}) //([])
@@ -24,11 +28,18 @@ function ProductDetail(props) {
                     { new : true}
                 )
                 */
+                
+                
 
             })
             //product.js의 find 확인할 것.
             .catch(err => alert(err))
     }, [])
+
+    //const addToCarthandler = (productId) => {
+    //    dispatch(addToCart(productId))
+
+    //}
 
     return (
     
@@ -45,7 +56,9 @@ function ProductDetail(props) {
                 </Col>
                 <Col lg={12} sm={24}>
                    
-                    <ProductInfo detail={Product} />
+                    <ProductInfo 
+                    //addToCart = {addToCarthandler}
+                    detail={Product} />
                 </Col>
             </Row>
         </div>
