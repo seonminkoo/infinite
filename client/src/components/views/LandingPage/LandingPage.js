@@ -20,6 +20,7 @@ function LandingPage() {
         stateCon: []
     })
     const [SearchTerm, setSearchTerm] = useState("")
+    const [View, setView] = useState()
 
     //초기에 최근 8개의 게시글만 보여줌. skip에 8 저장되어 있음
     useEffect(() => {
@@ -87,9 +88,7 @@ function LandingPage() {
                         style={{marginBottom:'5px'}}
                 />
                 </Card>
-
-                
-                </div>
+            </div>
         </Col>
     })
 
